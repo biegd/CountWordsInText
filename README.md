@@ -53,6 +53,13 @@ string cleaned = Regex.Replace(text.ToLower(), @"[^\wäöüß]+", " ");
 - Inhalte ersetzen (z.B. alle "," durch ";" in einer CSV-Datei).
 
 
+<h2>LINQ</h2>
+<strong>LINQ</strong> steht für <strong>Language Integrated Query</strong> und ist eine Leistungsstarke Funktion in C#, mit der du <strong>Abfragen
+auf Datenquellen direkt in der Programmiersprache</strong> formulieren kannst - ähnlich wie bei SQL, aber typsicher und in C#-Syntax integriert.
+
+<h3>Was macht LINQ besonders?</h3>
+Mit LINQ kannst du Daten <strong>filtern, gruppieren </strong> und <strong>transformieren</strong>, egal ob es sich um Listen, XML, Datenbanken oder andere Datenquellen handelt.
+
 
 
 

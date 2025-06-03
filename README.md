@@ -25,7 +25,36 @@ Regex steht für <strong>"Regular Expression</strong>, auf Deutsch: <strong>Regu
 Es handelt sich um eine <strong>Mustersprache</strong>, mit der man in Texten nach bestimmten Zeichenfolgen
 suchen, diese prüfen oder ersetzen kann.
 <h3>Was kann man mit Regex machen?</h3>
-![grafik](https://github.com/user-attachments/assets/b592b0a7-15c5-42ef-bde1-9816d0b5b6b3)
+
+| <strong>Aufgabe</strong>                    | <strong>Regex-Ausdruck</strong> | <strong>Bedeutung</strong>                       |
+|:--------------------------------------------|:--------------------------------|:------------------------------------------------:|
+|Prüfen, ob ein String nur aus Ziffern besteht|`^\d+$`                          |Anfang bis Ende nur Ziffer (`d` steht für Ziffer) |
+|Alle Satzzeichen entfernen                   |`[^\wäöüß]+`                     |Alle Zeichen entfernen, die nicht Buchstaben/ <br>Zahlen sind|
+|E-mail-Adressen finden                       |`b[w.-]+@[\w.-]+\.\w(2,4)\b      |Grobes Muster für eine Email-Adresse              |
+
+<h3>Beispiel aus der vorherigen Aufgabe</h3>
+
+```csharp
+string cleaned = Regex.Replace(text.ToLower(), @"[^\wäöüß]+", " ");
+```
+
+<strong>Bedeutung</strong>
+- `Regex.Replace(...)` ersetzt Teile eines Strings
+- Der Ausdruck '"[^\wäöüß]+"' bedeutet:
+  - `\w` steht für "word character" (also Buchstaben und Ziffern).
+  - `äöüß`wurden manuell ergänzt, damit auch deutsche Umlaute erlaubt sind.
+  - `[^...]`bedeutet: <strong>Nicht diese Zeichen.</strong>
+  - `+`heißt: Eins oder mehr davon.
+  - Ergebnis: <strong>Alle Zeichen, die keine Buchstaben oder Ziffern sind, werden durch Leerzeichen ersetzt</strong>.
+ 
+<h3>Wofür wird Regex typischerweise verwendet?</h3>
+- Eingaben validieren (z.B. Email, Postleitzahl, Telefonnummer)
+- Text durchsuchen (z.B. finde alle Zahlen im Text)
+- Inhalte ersetzen (z.B. alle "," durch ";" in einer CSV-Datei).
+
+
+
+
 
 
 

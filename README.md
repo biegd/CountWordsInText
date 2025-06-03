@@ -57,8 +57,98 @@ string cleaned = Regex.Replace(text.ToLower(), @"[^\wäöüß]+", " ");
 <strong>LINQ</strong> steht für <strong>Language Integrated Query</strong> und ist eine Leistungsstarke Funktion in C#, mit der du <strong>Abfragen
 auf Datenquellen direkt in der Programmiersprache</strong> formulieren kannst - ähnlich wie bei SQL, aber typsicher und in C#-Syntax integriert.
 
-<h3>Was macht LINQ besonders?</h3>
+<strong>Was macht LINQ besonders?</strong>
 Mit LINQ kannst du Daten <strong>filtern, gruppieren </strong> und <strong>transformieren</strong>, egal ob es sich um Listen, XML, Datenbanken oder andere Datenquellen handelt.
+
+<h3>Beispiel: LINQ auf einer Liste</h3>
+
+```csharp
+var namen = new List<string> { "Anna", "Ben", "Clara", "Anna", "David" };
+
+// Nur eindeutige Namen, alphabetisch sortiert:
+var eindeutigeNamen = namen
+    .Distinct()
+    .OrderBy(n => n);
+
+foreach (var name in eindeutigeNamen)
+{
+    Console.WriteLine(name);
+}
+```
+
+Ausgabe
+
+```csharp
+Anna
+Ben
+Clara
+David
+```
+
+<strong>Häufig genutzte LINQ-Methoden</strong>
+| <strong>Methode</strong>                    | <strong>Bedeutung</strong>                       |
+|:--------------------------------------------|:------------------------------------------------:|
+| `Where(...)`                                | Filtert nach einer Bedingung                     |
+| `Select(...)`                               | Wandelt Elemente um (wie `map`in anderen Sprachen|
+| `OrderBy(...)`/`ThenBy(...)`                | Sortieren                                        |
+| `GroupBy(...)`                              | Gruppiert nach einem Schlüssel                   |
+| `Distinct(...)`                             | Entfernt Duplikate                               |
+| `First()`, `FirstOrDefault()`               | Gibt erstes Element (oder `null`) zurück          |
+| `Any()`                                     | Gibt `true`zurück, wenn mindestens ein Element <br> vorhanden ist|
+| `Count()`                                   | Gibt die Anzahl zurück                           |
+
+
+
+<strong> Beispiel mit Zahlen</strong>
+```csharp
+int[] zahlen = { 1, 2, 3, 4, 5, 6 };
+
+// Alle geraden Zahlen verdoppeln und sortieren
+var ergebnis = zahlen
+    .Where(z => z % 2 == 0)
+    .Select(z => z * 2)
+    .OrderBy(z => z);
+
+foreach (var z in ergebnis)
+{
+    Console.WriteLine(z);
+}
+```
+
+Ausgabe:
+
+```cscharp
+4
+8
+12
+```
+
+<h3>LINQ Query-Syntax vs. Methodensyntax</h3>
+
+C# bietet zwei Stile - beide tun dasselbe
+
+<strong>Query-Syntax (SQL-ähnlich):
+```csharp
+var result = from z in zahlen
+             where z % 2 == 0
+             select z * 2;
+```
+
+<strong>Methodensyntax</strong>
+```csharp
+var result = zahlen.Where(z => z % 2 == 0).Select(z => z * 2);
+```
+
+<h3>Anwendungsfälle im Alltag:</h3>
+
+- Daten aus einer <strong>SQL-Datenbank</strong> (z.B. mit Entity Framework)
+- <strong> CSV-Dateien oder XML-Dateien</strong> auslesen und verarbeiten
+- <strong>Listen filtern und sortieren</strong> in WPF, ASP.NET, Konsolenprogrammen, usw.
+- Daten aggregieren (z.B. GroupBy, Sum, Average)
+
+
+
+
 
 
 
